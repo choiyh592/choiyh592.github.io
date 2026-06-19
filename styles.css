@@ -453,3 +453,90 @@ strong {
     transform: none !important;
   }
 }
+
+/* Tabs Navigation & Switching */
+.tabs-nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.1rem;
+}
+
+.tab-btn {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-time) ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 3px solid transparent;
+}
+
+.tab-btn i {
+  font-size: 0.95rem;
+}
+
+.tab-btn:hover {
+  color: var(--accent-color);
+  background-color: rgba(74, 116, 185, 0.05);
+}
+
+.tab-btn.active {
+  color: var(--accent-color);
+  font-weight: 500;
+  border-bottom-color: var(--accent-color);
+}
+
+.tab-content {
+  display: none;
+  animation: tabFadeIn 0.5s ease forwards;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Projects grid styling */
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.experience-content {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .tabs-nav {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .tab-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+  }
+}

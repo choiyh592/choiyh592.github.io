@@ -1,4 +1,4 @@
-{
+﻿{
   "publications": [
     {
       "title": "[Paper Title 1]",
@@ -13,12 +13,13 @@
         "Author 8",
         "Author 9",
         "Author 10",
-        "Author 11†",
-        "Author 12†"
+        "Author 11*",
+        "Author 12*"
       ],
       "venue": "Preprint (2025)",
       "thumbnail": "images/thumbs/1.jpg",
       "selected": 1,
+      "type": "paper",
       "award": "",
       "links": {
         "pdf": "#",
@@ -44,9 +45,106 @@
       "venue": "Preprint (2025)",
       "thumbnail": "images/thumbs/2.jpg",
       "selected": 0,
+      "type": "paper",
       "award": "",
       "links": {
         "pdf": "#"
+      }
+    },
+    {
+      "title": "[Patent Title 1]",
+      "authors": [
+        "Author 1",
+        "Author 2"
+      ],
+      "venue": "US Patent 12,345,678 (2024)",
+      "thumbnail": "images/thumbs/1.jpg",
+      "selected": 0,
+      "type": "patent",
+      "award": "",
+      "links": {
+        "patent": "#"
+      }
+    },
+    {
+      "title": "[Poster/Presentation Title 1]",
+      "authors": [
+        "Author 1",
+        "Author 3"
+      ],
+      "venue": "CVPR Workshop (2024)",
+      "thumbnail": "images/thumbs/2.jpg",
+      "selected": 1,
+      "type": "poster",
+      "award": "",
+      "links": {
+        "pdf": "#"
+      }
+    },
+    {
+      "title": "[Certification Name 1]",
+      "authors": [
+        "Issuing Organization"
+      ],
+      "venue": "Issued MM/YYYY",
+      "thumbnail": "images/thumbs/1.jpg",
+      "selected": 0,
+      "type": "certification",
+      "award": "",
+      "links": {
+        "credential": "#"
+      }
+    }
+  ],
+  "news": [
+    {
+      "date": "[MM/YYYY]",
+      "content": "[News Item 1]"
+    },
+    {
+      "date": "[MM/YYYY]",
+      "content": "[News Item 2]"
+    },
+    {
+      "date": "[MM/YYYY]",
+      "content": "[News Item 3]"
+    },
+    {
+      "date": "[MM/YYYY]",
+      "content": "[News Item 4]"
+    },
+    {
+      "date": "[MM/YYYY]",
+      "content": "[News Item 5]"
+    }
+  ],
+  "projects": [
+    {
+      "title": "[Project Title 1]",
+      "type": "project",
+      "description": "A high-performance deep learning library built from scratch.",
+      "thumbnail": "images/thumbs/1.jpg",
+      "links": {
+        "code": "#",
+        "project": "#"
+      }
+    },
+    {
+      "title": "[Deep Learning Experiment 1]",
+      "type": "experiment",
+      "description": "Investigating scaling laws of vision-language models on custom datasets.",
+      "thumbnail": "images/thumbs/2.jpg",
+      "links": {
+        "code": "#"
+      }
+    },
+    {
+      "title": "[Hackathon/Open Source Contribution 1]",
+      "type": "open-source",
+      "description": "Contributed a new optimizer implementation to PyTorch.",
+      "thumbnail": "images/thumbs/1.jpg",
+      "links": {
+        "code": "#"
       }
     }
   ]
