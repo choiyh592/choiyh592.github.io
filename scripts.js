@@ -25,6 +25,9 @@ function initTabs() {
   
   tabButtons.forEach(button => {
     button.addEventListener('click', () => {
+      if (button.classList.contains('active')) {
+        return;
+      }
       const targetTabId = button.getAttribute('data-tab') + '-tab';
       
       // Update button active state
@@ -322,3 +325,4 @@ window.onclick = function(event) {
     closeModal();
   }
 }
+
