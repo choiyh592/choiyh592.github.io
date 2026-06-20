@@ -34,10 +34,12 @@ header {
 }
 
 .header-image img {
-  width: 130px;
-  height: 130px;
+  max-width: clamp(110px, 16vw, 150px);
+  max-height: clamp(110px, 16vw, 180px);
+  width: auto;
+  height: auto;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 15%;
   border: 2px solid var(--border-color);
   transition: transform var(--transition-time) ease, box-shadow var(--transition-time) ease;
 }
@@ -163,8 +165,9 @@ section {
 }
 
 .pub-thumbnail {
-  width: 125px;
-  height: 125px;
+  width: 160px;
+  height: 160px;
+  align-self: center;
   flex-shrink: 0;
   border: 1px solid var(--border-color);
   overflow: hidden;
@@ -551,6 +554,77 @@ strong {
 
 
 
+
+
+
+
+
+/* Experience Section Styles */
+.experience-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.exp-title {
+  font-size: 1.05rem;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.exp-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-family: 'Merriweather', Georgia, serif;
+}
+
+.exp-org {
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 0.1rem;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.exp-advisors {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+}
+
+.exp-bullets {
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.exp-bullets li {
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  transition: transform var(--transition-time) ease;
+}
+
+.exp-bullets li:hover {
+  transform: translateX(var(--animation-offset));
+}
+
+.education-item {
+  margin-bottom: 1.5rem;
+}
 
 
 

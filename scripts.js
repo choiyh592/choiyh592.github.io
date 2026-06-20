@@ -219,7 +219,7 @@ function createItemElement(item, displayType) {
       
       let authorsHTML = '';
       item.authors.forEach((author, index) => {
-        if (author.includes('Author 3')) { // Highlight portfolio owner
+        if (author.includes('Yoonhyeok Choi')) { // Highlight portfolio owner
           authorsHTML += `<span class="highlight-name">${author}</span>`;
         } else {
           authorsHTML += author;
@@ -264,6 +264,12 @@ function createItemElement(item, displayType) {
       pdfLink.href = item.links.pdf;
       pdfLink.textContent = '[PDF]';
       links.appendChild(pdfLink);
+    }
+    if (item.links.doi) {
+      const doiLink = document.createElement('a');
+      doiLink.href = item.links.doi;
+      doiLink.textContent = '[DOI]';
+      links.appendChild(doiLink);
     }
     if (item.links.code) {
       const codeLink = document.createElement('a');
@@ -325,4 +331,5 @@ window.onclick = function(event) {
     closeModal();
   }
 }
+
 
