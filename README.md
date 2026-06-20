@@ -1,7 +1,5 @@
 ﻿# Minimal Academic Website Template
 
-A clean, modern, and minimal academic website template designed specifically for researchers, undergraduate/graduate students, and PhD candidates to showcase their education, professional experiences, publications, and projects.
-
 The design and source code are adapted from [Yuhui Zhang's academic website](https://cs.stanford.edu/~yuhuiz/).
 
 ## Features
@@ -12,13 +10,6 @@ The design and source code are adapted from [Yuhui Zhang's academic website](htt
 - **Dynamic Profile Photo Handling**: Supports images of any aspect ratio (portrait, landscape, or square) using CSS `clamp()` and aspect-ratio parameters, with soft rounded card corners.
 - **Unified Visual Geometry**: Clean separator borders and vertical midpoint alignment for thumbnails and detail items.
 - **SEO-friendly**: Contains meta tags optimized for search engine crawlability.
-
-## Who This Template Is For
-
-This template is ideal for:
-- Undergraduate and graduate students preparing portfolios.
-- PhD candidates and researchers who want a minimal, professional workspace to present publications.
-- Academics looking for a clean, single-page-app (SPA) style portfolio that requires zero complex frameworks (HTML/Vanilla CSS/JavaScript).
 
 ## Customizations from the Original Template
 
