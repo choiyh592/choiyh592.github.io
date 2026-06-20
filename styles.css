@@ -558,6 +558,84 @@ strong {
     width: 100%;
   }
 
+  /* Experience Mobile Layout: Title, Date, Desc each occupies one line */
+  .exp-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-date {
+    margin-left: 0;
+  }
+
+  /* Publications Mobile Layout: Grid alignment */
+  .publication-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .pub-thumbnail {
+    grid-column: 1;
+    grid-row: 1;
+    width: 80px !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    align-self: center !important;
+  }
+
+  .pub-content {
+    display: contents; /* Promote children to direct grid items */
+  }
+
+  .pub-title {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  .pub-authors {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    margin-bottom: 0;
+  }
+
+  /* Separate Venue and Links into different rows.
+     Promote .pub-venue and .pub-award from .pub-venue-container. */
+  .pub-venue-container {
+    display: contents;
+  }
+
+  .pub-venue {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+    justify-self: start;
+    margin-bottom: 0;
+  }
+
+  /* Award and Links occupy Row 4 together (side-by-side) */
+  .pub-award {
+    grid-column: 1 / span 2;
+    grid-row: 4;
+    justify-self: start;
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  .pub-links {
+    grid-column: 1 / span 2;
+    grid-row: 4;
+    justify-self: end;
+    align-self: center;
+    margin-top: 0;
+  }
+
   /* Font size adjustments on mobile */
   /* 1. Important texts (decreased a bit) */
   h1 {
@@ -704,3 +782,5 @@ strong {
 main section > p:first-of-type {
   margin-top: 0.8rem;
 }
+
+
