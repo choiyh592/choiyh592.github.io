@@ -540,15 +540,77 @@ strong {
 }
 
 @media (max-width: 768px) {
+  /* Stack tab bar vertically */
   .tabs-nav {
-    justify-content: space-between;
-    gap: 0;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
   }
   
   .tab-btn {
-    padding: 0.6rem 0.5rem;
-    font-size: 0.9rem;
-    gap: 0.3rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    justify-content: center;
+    border-radius: 6px;
+    width: 100%;
+  }
+
+  /* Font size adjustments on mobile */
+  /* 1. Important texts (decreased a bit) */
+  h1 {
+    font-size: 1.7rem !important;
+  }
+  
+  h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .pub-title {
+    font-size: 0.95rem !important;
+  }
+
+  .exp-title {
+    font-size: 0.95rem !important;
+  }
+
+  /* 2. Content texts (decreased a bit more) */
+  body {
+    font-size: 0.88rem !important;
+  }
+
+  p, li {
+    font-size: 0.88rem !important;
+  }
+
+  .pub-authors {
+    font-size: 0.8rem !important;
+  }
+
+  .pub-venue {
+    font-size: 0.8rem !important;
+  }
+
+  .pub-links {
+    font-size: 0.78rem !important;
+  }
+
+  .exp-org {
+    font-size: 0.85rem !important;
+  }
+
+  .exp-advisors {
+    font-size: 0.78rem !important;
+  }
+
+  .exp-bullets li {
+    font-size: 0.82rem !important;
+  }
+
+  .award-year {
+    flex: 0 0 60px !important;
+    font-size: 0.85rem !important;
   }
 }
 
@@ -625,6 +687,7 @@ strong {
 .education-item {
   margin-bottom: 1.5rem;
 }
+
 
 
 
