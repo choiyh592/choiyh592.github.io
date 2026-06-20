@@ -73,6 +73,20 @@
                                        }
                          },
                          {
+                             "title":  "Research Ethics Training for Human Subjects and Human Derivatives Research",
+                             "authors":  [
+                                             "Korea National Institute of Health (NIH)"
+                                         ],
+                             "venue":  "Completed 2025/11/17 (ID: 2025-Bioethics-010636)",
+                             "thumbnail":  "images/thumbs/knih.jpg",
+                             "selected":  0,
+                             "type":  "certification",
+                             "award":  "",
+                             "links":  {
+                                           "credential":  "#"
+                                       }
+                         },
+                         {
                              "title":  "The Medical Scientist Training Program (Undergraduate Course)",
                              "authors":  [
                                              "Yonsei University"

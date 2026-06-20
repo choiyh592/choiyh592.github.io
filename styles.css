@@ -59,7 +59,7 @@ h1 {
 h2 {
   font-size: 1.4rem;
   font-weight: 500;
-  margin: 1.75rem 0 1rem;
+  margin: 1.75rem 0 0;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-color);
   letter-spacing: -0.01em;
@@ -157,10 +157,11 @@ section {
 }
 
 .publication-item {
-  margin-bottom: 1.5rem;
-  padding: 0.75rem 0;
+  margin-bottom: 0;
+  padding: 0.8rem 0;
   border-bottom: 1px solid var(--border-color);
   display: flex;
+  align-items: center;
   gap: 1.25rem;
 }
 
@@ -692,3 +693,14 @@ strong {
 
 
 
+
+
+
+/* Spacing alignment below h2 headers */
+.experience-item:first-of-type,
+.education-item,
+.news-container,
+.misc-item,
+main section > p:first-of-type {
+  margin-top: 0.8rem;
+}
