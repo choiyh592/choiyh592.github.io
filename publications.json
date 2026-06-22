@@ -133,21 +133,44 @@
              ],
     "projects":  [
                      {
-                         "title":  "Placeholder",
+                         "title":  "SVEN: SHAP analysis of Vectorized Entries for Neural networks",
                          "type":  "project",
-                         "description":  "Deep learning models for early classification and prediction of central nervous system inflammatory diseases using multimodal clinical signals.",
-                         "thumbnail":  "images/thumbs/1.jpg",
+                         "description":  "Constructed an efficient SHAP evaluation framework for vectorized inputs by implementing Štrumbelj-style approximations",
+                         "thumbnail":  "https://upload.wikimedia.org/wikipedia/en/c/ce/Sven_from_Frozen.png",
+                         "venue":  "Project @ DHLAB",
                          "links":  {
-                                       "code":  "https://github.com/choiyh592"
+                                       "code":  "https://github.com/choiyh592/sven"
                                    }
                      },
                      {
-                         "title":  "Placeholder",
+                         "title":  "Sensitivity Stacking: Escaping Index Hell with an Intuitive Framework for Coordinate-Free Backpropagation",
                          "type":  "experiment",
-                         "description":  "Resource-intensive model training, preprocessing, and analysis of 3D brain T1-weighted MRIs inside multi-GPU Linux clusters.",
-                         "thumbnail":  "images/thumbs/2.jpg",
+                         "description":  "Objective: Construct a high-level language for backpropagation by introducing modular nudge machines and compressing complex tensor derivatives into simple algebraic manipulations.",
+                         "thumbnail":  "https://em-content.zobj.net/source/google/56/construction-worker_1f477.png",
+                         "venue":  "Work in Progress"
+                     },
+                     {
+                         "title":  "Unifying RL Actors under the Performance Difference Lemma",
+                         "type":  "experiment",
+                         "description":  "Objective: Unite the zoo of disconnected acronyms in Modern RL under the performance difference lemma, and utilize it to create a unified objective for modern Actor-Critic Algorithms.",
+                         "thumbnail":  "https://em-content.zobj.net/source/google/56/construction-worker_1f477.png",
+                         "venue":  "Work in Progress"
+                     },
+                     {
+                         "title":  "JET: Jacobian Eigenvalue Trajectories for Representational Comparison of Generative Flows",
+                         "type":  "experiment",
+                         "description":  "Objective: Provide the geometric intuition behind Jacobi's formula and utilize it to form a method for representational comparison for generative flow models.",
+                         "thumbnail":  "https://em-content.zobj.net/source/google/56/construction-worker_1f477.png",
+                         "venue":  "Work in Progress"
+                     },
+                     {
+                         "title":  "HUNGERGAMES: Hierarchical Unveiling of Neucleotide Genomic Evolution via Rigorous Game-theoretic Attribution Modeling of Evolutionary Sequences",
+                         "type":  "experiment",
+                         "description":  "Introduced a game-theoretic framework using SHAP interactions to decode large genomic language models, mapping model likelihoods to interpretable mutation neighborhoods using COVID-19 evolutionary data.",
+                         "thumbnail":  "images/thumbs/hungergames.png",
+                         "venue":  "Team Project @ YAI",
                          "links":  {
-                                       "code":  "https://github.com/choiyh592"
+                                       "code":  "https://github.com/SOL1archive/YAICON-8th-Pathogenic-Mutation-Prediction"
                                    }
                      },
                      {
