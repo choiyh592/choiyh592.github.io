@@ -135,7 +135,7 @@
                      {
                          "title":  "SVEN: SHAP analysis of Vectorized Entries for Neural networks",
                          "type":  "project",
-                         "description":  "Constructed an efficient SHAP evaluation framework for vectorized inputs by implementing Štrumbelj-style approximations",
+                         "description":  "Constructed an efficient SHAP evaluation framework for vectorized inputs by implementing Štrumbelj-style approximations.",
                          "thumbnail":  "https://upload.wikimedia.org/wikipedia/en/c/ce/Sven_from_Frozen.png",
                          "venue":  "Project @ DHLAB",
                          "links":  {
