@@ -81,10 +81,7 @@
                              "thumbnail":  "images/thumbs/knih.jpg",
                              "selected":  0,
                              "type":  "certification",
-                             "award":  "",
-                             "links":  {
-                                           "credential":  "#"
-                                       }
+                             "award":  ""
                          },
                          {
                              "title":  "The Medical Scientist Training Program (Undergraduate Course)",
@@ -95,10 +92,7 @@
                              "thumbnail":  "images/thumbs/yonsei.svg",
                              "selected":  0,
                              "type":  "certification",
-                             "award":  "",
-                             "links":  {
-                                           "credential":  "#"
-                                       }
+                             "award":  ""
                          }
                      ],
     "news":  [
