@@ -18,6 +18,36 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="me" href="https://orcid.org/0009-0008-5914-3600">
+    <link rel="canonical" href="https://choiyh592.github.io/">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yoonhyeok Choi",
+      "givenName": "Yoonhyeok",
+      "familyName": "Choi",
+      "url": "https://choiyh592.github.io",
+      "image": "https://choiyh592.github.io/images/profile.jpg",
+      "email": "mailto:choiyh592@yonsei.ac.kr",
+      "jobTitle": "Computer Science Undergraduate",
+      "description": "Undergraduate Student in Computer Science @ Yonsei University. Research in machine learning and medical AI.",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Yonsei University"
+      },
+      "knowsAbout": ["Machine Learning", "Medical AI", "Generative Models", "Reinforcement Learning", "AI Interpretability"],
+      "sameAs": [
+        "https://orcid.org/0009-0008-5914-3600",
+        "https://github.com/choiyh592"
+      ],
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "ORCID",
+        "value": "0009-0008-5914-3600"
+      }
+    }
+    </script>
 </head>
 <body id="top">
     <header>
@@ -26,25 +56,26 @@
             <p>Computer Science Undergraduate @ Yonsei University</p>
             <div class="social-links-header">
                 <!-- <a href="#"><i class="fas fa-graduation-cap"></i>Google Scholar</a> -->
-                <a href="https://drive.google.com/file/d/1H_GJQQ7exbi3CoJ_4zYJjxtI91luTgyB/view?usp=drive_link"><i class="fas fa-address-card"></i>CV</a>
-                <a href="https://github.com/choiyh592" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+                <a href="cv/cv.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-address-card"></i>CV</a>
+                <a href="https://orcid.org/0009-0008-5914-3600" target="_blank" rel="noopener noreferrer"><i class="fab fa-orcid"></i>ORCID</a>
+                <a href="https://github.com/choiyh592" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>GitHub</a>
                 <a href="mailto:choiyh592@yonsei.ac.kr"><i class="fas fa-envelope"></i>Email</a>
             </div>
         </div>
         <div class="header-image">
-            <img src="images/profile.jpg" alt="Profile Photo">
+            <img src="images/profile.jpg" alt="Yoonhyeok Choi profile photo">
         </div>
     </header>
 
-    <nav class="tabs-nav">
-        <button class="tab-btn active" data-tab="home"><i class="fas fa-user"></i> About me</button>
-        <button class="tab-btn" data-tab="research"><i class="fas fa-file-alt"></i> Research</button>
-        <button class="tab-btn" data-tab="projects"><i class="fas fa-laptop-code"></i> Projects</button>
+    <nav class="tabs-nav" role="tablist" aria-label="Site sections">
+        <button class="tab-btn active" data-tab="home" id="tab-home" role="tab" aria-selected="true" aria-controls="home-tab"><i class="fas fa-user"></i> About me</button>
+        <button class="tab-btn" data-tab="research" id="tab-research" role="tab" aria-selected="false" aria-controls="research-tab" tabindex="-1"><i class="fas fa-file-alt"></i> Research</button>
+        <button class="tab-btn" data-tab="projects" id="tab-projects" role="tab" aria-selected="false" aria-controls="projects-tab" tabindex="-1"><i class="fas fa-laptop-code"></i> Projects</button>
     </nav>
 
     <main>
         <!-- About me (About Me) Tab -->
-        <div id="home-tab" class="tab-content active">
+        <div id="home-tab" class="tab-content active" role="tabpanel" aria-labelledby="tab-home" tabindex="0">
             <section id="about">
                 <p>👋Hi! I am a Bachelor of Science student in Computer Science at <strong>Yonsei University</strong> in Seoul, Republic of Korea, currently in my Junior year. I am passionate about technical communications and pedagogy, especially the task of making complex concepts easier to understand using comprehensive visualizations and adequate metaphors.</p>
                 <p>My research interests lie at the intersection of computer science and medicine, focusing on: <strong>Generative models, Reinforcement Learning, AI interpretability, and Medical applications of AI</strong>.</p>
@@ -133,7 +164,7 @@
         </div>
 
         <!-- Research Tab -->
-        <div id="research-tab" class="tab-content">
+        <div id="research-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-research" tabindex="0">
             <section id="peer-reviewed">
                 <h2>📄 Peer-Reviewed Publications</h2>
                 <div id="peer-reviewed-container">
@@ -164,7 +195,7 @@
         </div>
 
         <!-- Projects Tab -->
-        <div id="projects-tab" class="tab-content">
+        <div id="projects-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-projects" tabindex="0">
             <section id="projects-section">
                 <h2>💻 Engineering & Personal Projects</h2>
                 <div id="projects-container" class="projects-grid">
@@ -192,9 +223,9 @@
         <p>Last updated: June 2026. Design and source code from the <a href="https://github.com/yuhui-zh15/Minimal-Academic-Website/tree/main">Minimal Academic Website Template</a>.</p>
     </footer>
 
-    <div id="imageModal" class="modal">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="Enlarged image view" aria-hidden="true">
+        <span class="modal-close" onclick="closeModal()" role="button" tabindex="0" aria-label="Close image view">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Enlarged view">
     </div>
     <script src="scripts.js"></script>
 </body>

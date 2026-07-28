@@ -18,36 +18,85 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Setup tab navigation logic
-function initTabs() {
+// Setup tab navigation logic (with ARIA state + URL-hash routing)
+const VALID_TABS = ['home', 'research', 'projects'];
+
+// Activate a tab by its name (e.g. 'home'). Visual behaviour is unchanged:
+// the .active class still drives display; this only adds ARIA sync, hash
+// routing and the existing mobile scroll.
+function activateTab(tabName, opts = {}) {
+  const { scroll = false, updateHash = true } = opts;
+  if (!VALID_TABS.includes(tabName)) {
+    tabName = 'home';
+  }
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
-  
-  tabButtons.forEach(button => {
+  const targetTabId = tabName + '-tab';
+
+  tabButtons.forEach(btn => {
+    const isActive = btn.getAttribute('data-tab') === tabName;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    btn.setAttribute('tabindex', isActive ? '0' : '-1');
+  });
+
+  tabContents.forEach(content => {
+    content.classList.toggle('active', content.id === targetTabId);
+  });
+
+  // Keep the URL in sync so tabs are deep-linkable and survive refresh.
+  if (updateHash && ('#' + tabName) !== window.location.hash) {
+    history.pushState({ tab: tabName }, '', '#' + tabName);
+  }
+
+  if (scroll && window.innerWidth <= 768) {
+    document.querySelector('.tabs-nav').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function initTabs() {
+  const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+
+  tabButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
       if (button.classList.contains('active')) {
         return;
       }
-      const targetTabId = button.getAttribute('data-tab') + '-tab';
-      
-      // Update button active state
-      tabButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-      
-      // Update content active state
-      tabContents.forEach(content => {
-        content.classList.remove('active');
-        if (content.id === targetTabId) {
-          content.classList.add('active');
-        }
-      });
-      
-      // Scroll to top of content area on mobile
-      if (window.innerWidth <= 768) {
-        document.querySelector('.tabs-nav').scrollIntoView({ behavior: 'smooth' });
+      activateTab(button.getAttribute('data-tab'), { scroll: true });
+    });
+
+    // Keyboard support for the tablist (Left/Right/Home/End arrows).
+    button.addEventListener('keydown', (e) => {
+      let newIndex = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        newIndex = (index + 1) % tabButtons.length;
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        newIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+      } else if (e.key === 'Home') {
+        newIndex = 0;
+      } else if (e.key === 'End') {
+        newIndex = tabButtons.length - 1;
+      }
+      if (newIndex !== null) {
+        e.preventDefault();
+        const nextBtn = tabButtons[newIndex];
+        activateTab(nextBtn.getAttribute('data-tab'), { scroll: true });
+        nextBtn.focus();
       }
     });
   });
+
+  // Respond to back/forward navigation.
+  window.addEventListener('popstate', () => {
+    const tab = (window.location.hash || '').replace('#', '');
+    activateTab(tab || 'home', { updateHash: false });
+  });
+
+  // Honour an incoming hash (deep link / refresh) without pushing a new entry.
+  const initialTab = (window.location.hash || '').replace('#', '');
+  if (VALID_TABS.includes(initialTab) && initialTab !== 'home') {
+    activateTab(initialTab, { updateHash: false });
+  }
 }
 
 // Load data from publications.json
@@ -60,7 +109,6 @@ function loadData() {
       return response.json();
     })
     .then(data => {
-      console.log("Data loaded successfully:", data);
       allPublications = data.publications || [];
       allNews = data.news || [];
       allProjects = data.projects || [];
@@ -191,6 +239,7 @@ function createItemElement(item, displayType) {
     const thumbnailImg = document.createElement('img');
     thumbnailImg.src = item.thumbnail;
     thumbnailImg.alt = `${item.title} thumbnail`;
+    thumbnailImg.loading = 'lazy';
     thumbnail.appendChild(thumbnailImg);
     itemDiv.appendChild(thumbnail);
   }
@@ -296,6 +345,12 @@ function createItemElement(item, displayType) {
       links.appendChild(credLink);
     }
     
+    // Open external resources in a new tab safely (behaviour only, no visual change).
+    links.querySelectorAll('a').forEach(a => {
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+    });
+
     if (links.children.length > 0) {
       content.appendChild(links);
     }
@@ -306,22 +361,35 @@ function createItemElement(item, displayType) {
 }
 
 // Modal functionality for viewing original images
+let modalLastFocused = null;
+
 function openModal(imageSrc) {
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalImage');
+  modalLastFocused = document.activeElement;
   modal.style.display = "block";
   setTimeout(() => {
     modal.classList.add('show');
   }, 10);
   modalImg.src = imageSrc;
+  modal.setAttribute('aria-hidden', 'false');
+  // Move focus to the close control for keyboard users.
+  const closeBtn = modal.querySelector('.modal-close');
+  if (closeBtn) closeBtn.focus();
 }
 
 function closeModal() {
   const modal = document.getElementById('imageModal');
   modal.classList.remove('show');
+  modal.setAttribute('aria-hidden', 'true');
   setTimeout(() => {
     modal.style.display = "none";
   }, 300);
+  // Restore focus to the element that opened the modal.
+  if (modalLastFocused && typeof modalLastFocused.focus === 'function') {
+    modalLastFocused.focus();
+  }
+  modalLastFocused = null;
 }
 
 // Close modal when clicking outside the image
@@ -331,5 +399,26 @@ window.onclick = function(event) {
     closeModal();
   }
 }
+
+// Keyboard support: Escape closes the modal; Enter/Space activate the close control.
+document.addEventListener('keydown', function(event) {
+  const modal = document.getElementById('imageModal');
+  if (!modal || modal.style.display !== 'block') return;
+  if (event.key === 'Escape') {
+    closeModal();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const closeBtn = document.querySelector('.modal-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        closeModal();
+      }
+    });
+  }
+});
 
 
