@@ -21,11 +21,16 @@ document.addEventListener('DOMContentLoaded', function() {
 // Setup tab navigation logic (with ARIA state + URL-hash routing)
 const VALID_TABS = ['home', 'research', 'experience'];
 
+// The third tab was renamed 'projects' -> 'experience'. Keep any previously
+// shared or bookmarked #projects link pointing at the right tab.
+const TAB_ALIASES = { projects: 'experience' };
+
 // Activate a tab by its name (e.g. 'home'). Visual behaviour is unchanged:
 // the .active class still drives display; this only adds ARIA sync, hash
 // routing and the existing mobile scroll.
 function activateTab(tabName, opts = {}) {
   const { scroll = false, updateHash = true } = opts;
+  tabName = TAB_ALIASES[tabName] || tabName;
   if (!VALID_TABS.includes(tabName)) {
     tabName = 'home';
   }
@@ -93,7 +98,8 @@ function initTabs() {
   });
 
   // Honour an incoming hash (deep link / refresh) without pushing a new entry.
-  const initialTab = (window.location.hash || '').replace('#', '');
+  const rawTab = (window.location.hash || '').replace('#', '');
+  const initialTab = TAB_ALIASES[rawTab] || rawTab;
   if (VALID_TABS.includes(initialTab) && initialTab !== 'home') {
     activateTab(initialTab, { updateHash: false });
   }
