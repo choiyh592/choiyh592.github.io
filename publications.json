@@ -101,6 +101,10 @@
                      "content":  "Participated in the <a href='https://news.yonsei.ac.kr/kr/news/detail?bbSeq=35920&bbCategory=md'>2026 Spring Gangnam Severance Hospital - College of Engineering Joint Academic Symposium</a>."
                  },
                  {
+                     "date":  "01/2026",
+                     "content":  "Korean patent granted for a multimodal deep learning model for the early classification and prognosis of central nervous system inflammatory diseases."
+                 },
+                 {
                      "date":  "11/2025",
                      "content":  "Started as an Undergraduate Research Intern at Gangnam Severance Hospital, Dept. of Neurology."
                  },
@@ -123,6 +127,10 @@
                  {
                      "date":  "06/2024",
                      "content":  "Co-authored poster presented at Korean Epilepsy Congress (KEC 2024)."
+                 },
+                 {
+                     "date":  "11/2023",
+                     "content":  "Started as an Undergraduate Research Intern at the Digital Healthcare Laboratory, Yonsei University College of Medicine."
                  }
              ],
     "projects":  [
@@ -138,7 +146,7 @@
                      },
                      {
                          "title":  "HUNGERGAMES: Hierarchical Unveiling of Neucleotide Genomic Evolution via Rigorous Game-theoretic Attribution Modeling of Evolutionary Sequences",
-                         "type":  "experiment",
+                         "type":  "project",
                          "description":  "Introduced a game-theoretic framework using SHAP interactions to decode large genomic language models, mapping model likelihoods to interpretable mutation neighborhoods using COVID-19 evolutionary data.",
                          "thumbnail":  "images/thumbs/hungergames.png",
                          "venue":  "Team Project @ YAI",
@@ -148,7 +156,7 @@
                      },
                      {
                          "title":  "IBM Z X UNSA Hackathon 2026",
-                         "type":  "open-source",
+                         "type":  "competition",
                          "description":  "Built 'MARGE: ML Agents for Rule-Based Generation of Evidence', an agentic LLM workflow designed to bridge the gap between complex ML diagnostics and accessible healthcare by generating rule-based clinical evidence.",
                          "thumbnail":  "https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/654/605/datas/medium.png",
                          "venue":  "6th/69 Teams (Top 10), Best International Hack",

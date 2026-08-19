@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Setup tab navigation logic (with ARIA state + URL-hash routing)
-const VALID_TABS = ['home', 'research', 'projects'];
+const VALID_TABS = ['home', 'research', 'experience'];
 
 // Activate a tab by its name (e.g. 'home'). Visual behaviour is unchanged:
 // the .active class still drives display; this only adds ARIA sync, hash
@@ -115,7 +115,7 @@ function loadData() {
       
       renderHomeTab();
       renderResearchTab();
-      renderProjectsTab();
+      renderExperienceTab();
     })
     .catch(error => {
       console.error('Error loading data:', error);
@@ -165,8 +165,7 @@ function renderResearchTab() {
   const categories = {
     'paper': document.getElementById('peer-reviewed-container'),
     'patent': document.getElementById('patents-container'),
-    'poster': document.getElementById('presentations-container'),
-    'certification': document.getElementById('certifications-container')
+    'poster': document.getElementById('presentations-container')
   };
 
   // Clear all containers
@@ -193,12 +192,12 @@ function renderResearchTab() {
   }
 }
 
-// Renders the Projects Tab components
-function renderProjectsTab() {
+// Renders the Experience Tab dynamic components
+// (the Experience section itself is static markup in index.html)
+function renderExperienceTab() {
   const containers = {
     'project': document.getElementById('projects-container'),
-    'experiment': document.getElementById('dl-experiments-container'),
-    'open-source': document.getElementById('open-source-container')
+    'competition': document.getElementById('competitions-container')
   };
 
   // Clear all containers
@@ -206,7 +205,7 @@ function renderProjectsTab() {
     if (containers[key]) containers[key].innerHTML = '';
   }
 
-  // Group and render projects
+  // Group and render projects / competitions
   allProjects.forEach(proj => {
     const type = proj.type || 'project';
     const container = containers[type];
@@ -216,13 +215,21 @@ function renderProjectsTab() {
     }
   });
 
+  // Certifications live in publications.json alongside papers/posters
+  const certContainer = document.getElementById('certifications-container');
+  if (certContainer) {
+    certContainer.innerHTML = '';
+    allPublications
+      .filter(pub => pub.type === 'certification')
+      .forEach(cert => certContainer.appendChild(createItemElement(cert, 'certification')));
+  }
+
   // Display empty messages if any container is empty
-  for (let key in containers) {
-    const container = containers[key];
+  [...Object.values(containers), certContainer].forEach(container => {
     if (container && container.children.length === 0) {
       container.innerHTML = '<p class="text-muted">No items to display.</p>';
     }
-  }
+  });
 }
 
 // Creates an item element (unified for publications, patents, posters, certs, projects)

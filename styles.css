@@ -297,7 +297,7 @@ section {
 
 /* News section */
 .news-container {
-  max-height: 300px;
+  max-height: 420px;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -707,8 +707,12 @@ strong {
   border-bottom: 1px dashed var(--border-color);
 }
 
+/* Close the list with a solid rule (matching .publication-item lists) and
+   drop the trailing margin, so the gap to the next section heading is
+   identical to every other section on the Experience tab. */
 .experience-item:last-child {
-  border-bottom: none;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0;
 }
 
 .exp-header {

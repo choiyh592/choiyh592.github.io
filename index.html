@@ -70,7 +70,7 @@
     <nav class="tabs-nav" role="tablist" aria-label="Site sections">
         <button class="tab-btn active" data-tab="home" id="tab-home" role="tab" aria-selected="true" aria-controls="home-tab"><i class="fas fa-user"></i> About me</button>
         <button class="tab-btn" data-tab="research" id="tab-research" role="tab" aria-selected="false" aria-controls="research-tab" tabindex="-1"><i class="fas fa-file-alt"></i> Research</button>
-        <button class="tab-btn" data-tab="projects" id="tab-projects" role="tab" aria-selected="false" aria-controls="projects-tab" tabindex="-1"><i class="fas fa-laptop-code"></i> Projects</button>
+        <button class="tab-btn" data-tab="experience" id="tab-experience" role="tab" aria-selected="false" aria-controls="experience-tab" tabindex="-1"><i class="fas fa-briefcase"></i> Experience</button>
     </nav>
 
     <main>
@@ -98,51 +98,6 @@
                 <div class="news-container">
                     <ul class="news-list" id="news-container">
                         <!-- News Feed loaded dynamically -->
-                    </ul>
-                </div>
-            </section>
-
-            <section id="experience">
-                <h2>💼 Experience</h2>
-                
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <span class="exp-title">Undergraduate Research Intern</span>
-                        <span class="exp-date">Nov 2025 – Ongoing</span>
-                    </div>
-                    <div class="exp-org">Gangnam Severance Hospital, Department of Neurology, Yonsei University College of Medicine</div>
-                    <div class="exp-advisors">Advisors: Prof. Won Ju Kim, Prof. Bo Kyu Choi</div>
-                    <ul class="exp-bullets">
-                        <li>Developed a thorough understanding of medical signal (EEG, PSG) data and relevant analysis methods.</li>
-                        <li>Managed and processed sensitive clinical data within Severance Hospital's restricted internal network.</li>
-                        <li>Co-authored and successfully navigated Institutional Review Board (IRB) protocols for longitudinal clinical research.</li>
-                        <li>Played a key role in securing a national research grant from the Korea Health Industry Development Institute (KHIDI).</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <span class="exp-title">Imagery Intelligence (IMINT) Operator</span>
-                        <span class="exp-date">May 2024 – Nov 2025</span>
-                    </div>
-                    <div class="exp-org">Republic of Korea Army (Compulsory military service)</div>
-                    <ul class="exp-bullets">
-                        <li>Served compulsory military service as per the regulations of the South Korean government.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <span class="exp-title">Undergraduate Research Intern</span>
-                        <span class="exp-date">Nov 2023 – Apr 2024</span>
-                    </div>
-                    <div class="exp-org">Digital Healthcare Laboratory, Department of Biomedical Systems Informatics, Yonsei University College of Medicine</div>
-                    <div class="exp-advisors">Advisor: Prof. Yu Rang Park</div>
-                    <ul class="exp-bullets">
-                        <li>Constructed and deployed public repositories on GitHub for academic publications utilizing the Git workflow.</li>
-                        <li>Processed and analyzed medical imaging (mainly T1W MRIs) and clinical data for research applications.</li>
-                        <li>Executed resource-intensive model training and optimization within remote multi-GPU Linux environments.</li>
-                        <li>Gained hands-on experience in the academic paper writing process including writing, submission, review, and revision.</li>
                     </ul>
                 </div>
             </section>
@@ -185,6 +140,68 @@
                     <!-- Dynamic load -->
                 </div>
             </section>
+        </div>
+
+        <!-- Experience Tab -->
+        <div id="experience-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-experience" tabindex="0">
+            <section id="experience">
+                <h2>💼 Experience</h2>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Undergraduate Research Intern</span>
+                        <span class="exp-date">Nov 2025 – Ongoing</span>
+                    </div>
+                    <div class="exp-org">Gangnam Severance Hospital, Department of Neurology, Yonsei University College of Medicine</div>
+                    <div class="exp-advisors">Advisors: Prof. Won Ju Kim, Prof. Bo Kyu Choi</div>
+                    <ul class="exp-bullets">
+                        <li>Developed a thorough understanding of medical signal (EEG, PSG) data and relevant analysis methods.</li>
+                        <li>Managed and processed sensitive clinical data within Severance Hospital's restricted internal network.</li>
+                        <li>Co-authored and successfully navigated Institutional Review Board (IRB) protocols for longitudinal clinical research.</li>
+                        <li>Played a key role in securing a national research grant from the Korea Health Industry Development Institute (KHIDI).</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Imagery Intelligence (IMINT) Operator</span>
+                        <span class="exp-date">May 2024 – Nov 2025</span>
+                    </div>
+                    <div class="exp-org">Republic of Korea Army (Compulsory military service)</div>
+                    <ul class="exp-bullets">
+                        <li>Served compulsory military service as per the regulations of the South Korean government.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Undergraduate Research Intern</span>
+                        <span class="exp-date">Nov 2023 – Apr 2024</span>
+                    </div>
+                    <div class="exp-org">Digital Healthcare Laboratory, Department of Biomedical Systems Informatics, Yonsei University College of Medicine</div>
+                    <div class="exp-advisors">Advisor: Prof. Yu Rang Park</div>
+                    <ul class="exp-bullets">
+                        <li>Constructed and deployed public repositories on GitHub for academic publications utilizing the Git workflow.</li>
+                        <li>Processed and analyzed medical imaging (mainly T1W MRIs) and clinical data for research applications.</li>
+                        <li>Executed resource-intensive model training and optimization within remote multi-GPU Linux environments.</li>
+                        <li>Gained hands-on experience in the academic paper writing process including writing, submission, review, and revision.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="projects-section">
+                <h2>💻 Projects</h2>
+                <div id="projects-container" class="projects-grid">
+                    <!-- Dynamic load -->
+                </div>
+            </section>
+
+            <section id="competitions-section">
+                <h2>🏆 Competitions</h2>
+                <div id="competitions-container" class="projects-grid">
+                    <!-- Dynamic load -->
+                </div>
+            </section>
 
             <section id="certifications">
                 <h2>🏅 Certifications</h2>
@@ -193,34 +210,10 @@
                 </div>
             </section>
         </div>
-
-        <!-- Projects Tab -->
-        <div id="projects-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-projects" tabindex="0">
-            <section id="projects-section">
-                <h2>💻 Engineering & Personal Projects</h2>
-                <div id="projects-container" class="projects-grid">
-                    <!-- Dynamic load -->
-                </div>
-            </section>
-
-            <section id="dl-experiments-section">
-                <h2>👥 Academic & Team Projects</h2>
-                <div id="dl-experiments-container" class="projects-grid">
-                    <!-- Dynamic load -->
-                </div>
-            </section>
-
-            <section id="open-source-section">
-                <h2>🏆 Hackathons & Competitions</h2>
-                <div id="open-source-container" class="projects-grid">
-                    <!-- Dynamic load -->
-                </div>
-            </section>
-        </div>
     </main>
 
     <footer>
-        <p>Last updated: June 2026. Design and source code from the <a href="https://github.com/yuhui-zh15/Minimal-Academic-Website/tree/main">Minimal Academic Website Template</a>.</p>
+        <p>Last updated: August 2026. Design and source code from the <a href="https://github.com/yuhui-zh15/Minimal-Academic-Website/tree/main">Minimal Academic Website Template</a>.</p>
     </footer>
 
     <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="Enlarged image view" aria-hidden="true">
