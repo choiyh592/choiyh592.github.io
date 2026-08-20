@@ -68,7 +68,7 @@
     </header>
 
     <nav class="tabs-nav" role="tablist" aria-label="Site sections">
-        <button class="tab-btn active" data-tab="home" id="tab-home" role="tab" aria-selected="true" aria-controls="home-tab"><i class="fas fa-user"></i> About me</button>
+        <button class="tab-btn active" data-tab="home" id="tab-home" role="tab" aria-selected="true" aria-controls="home-tab"><i class="fas fa-user"></i> About Me</button>
         <button class="tab-btn" data-tab="research" id="tab-research" role="tab" aria-selected="false" aria-controls="research-tab" tabindex="-1"><i class="fas fa-file-alt"></i> Research</button>
         <button class="tab-btn" data-tab="experience" id="tab-experience" role="tab" aria-selected="false" aria-controls="experience-tab" tabindex="-1"><i class="fas fa-briefcase"></i> Experience</button>
     </nav>
@@ -82,7 +82,7 @@
             </section>
 
             <section id="education">
-                <h2>🎓 Education</h2>
+                <h2><i class="fas fa-graduation-cap" aria-hidden="true"></i>Education</h2>
                 <div class="education-item">
                     <div class="exp-header">
                         <span class="exp-title">Yonsei University</span>
@@ -94,7 +94,7 @@
             </section>
 
             <section id="news">
-                <h2>📢 News Feed</h2>
+                <h2><i class="fas fa-bullhorn" aria-hidden="true"></i>News Feed</h2>
                 <div class="news-container">
                     <ul class="news-list" id="news-container">
                         <!-- News Feed loaded dynamically -->
@@ -103,14 +103,14 @@
             </section>
 
             <section id="selected-work">
-                <h2>⭐ Selected Work</h2>
+                <h2><i class="fas fa-star" aria-hidden="true"></i>Selected Work</h2>
                 <div id="selected-publications-container">
                     <!-- Dynamic load of top 1-2 selected publications -->
                 </div>
             </section>
 
             <section id="miscellaneous">
-                <h2>🛠️ Skills & Personal Information</h2>
+                <h2><i class="fas fa-tools" aria-hidden="true"></i>Skills & Personal Information</h2>
                 <div class="misc-item">
                     <p><strong>Technical Skills</strong>: Python, PyTorch, Linux</p>
                     <p><strong>Languages</strong>: English (Fluent), Korean (Native)</p>
@@ -120,22 +120,26 @@
 
         <!-- Research Tab -->
         <div id="research-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-research" tabindex="0">
+            <section id="research-intro">
+                <p>My published work on <strong>Medical AI</strong> applies deep learning to the diagnosis and prognosis of neurological disease, mostly from brain MRI, with a focus on central nervous system inflammation and epilepsy.</p>
+            </section>
+
             <section id="peer-reviewed">
-                <h2>📄 Peer-Reviewed Publications</h2>
+                <h2><i class="fas fa-book" aria-hidden="true"></i>Peer-Reviewed Publications</h2>
                 <div id="peer-reviewed-container">
                     <!-- Dynamic load -->
                 </div>
             </section>
 
             <section id="patents">
-                <h2>📜 Patents</h2>
+                <h2><i class="fas fa-scroll" aria-hidden="true"></i>Patents</h2>
                 <div id="patents-container">
                     <!-- Dynamic load -->
                 </div>
             </section>
 
             <section id="presentations">
-                <h2>📊 Conference Presentations & Posters</h2>
+                <h2><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>Conference Presentations & Posters</h2>
                 <div id="presentations-container">
                     <!-- Dynamic load -->
                 </div>
@@ -144,8 +148,12 @@
 
         <!-- Experience Tab -->
         <div id="experience-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-experience" tabindex="0">
+            <section id="experience-intro">
+                <p>Most of my work has taken place where <strong>machine learning meets clinical practice</strong>: inside hospitals and medical schools, and in projects aimed at making a model's output interpretable enough to act on.</p>
+            </section>
+
             <section id="experience-section">
-                <h2>💼 Experience</h2>
+                <h2><i class="fas fa-building" aria-hidden="true"></i>Experience</h2>
 
                 <div class="experience-item">
                     <div class="exp-header">
@@ -190,21 +198,21 @@
             </section>
 
             <section id="projects-section">
-                <h2>💻 Projects</h2>
+                <h2><i class="fas fa-laptop-code" aria-hidden="true"></i>Projects</h2>
                 <div id="projects-container" class="projects-grid">
                     <!-- Dynamic load -->
                 </div>
             </section>
 
             <section id="competitions-section">
-                <h2>🏆 Competitions</h2>
+                <h2><i class="fas fa-trophy" aria-hidden="true"></i>Competitions</h2>
                 <div id="competitions-container" class="projects-grid">
                     <!-- Dynamic load -->
                 </div>
             </section>
 
             <section id="certifications">
-                <h2>🏅 Certifications</h2>
+                <h2><i class="fas fa-certificate" aria-hidden="true"></i>Certifications</h2>
                 <div id="certifications-container">
                     <!-- Dynamic load -->
                 </div>

@@ -91,11 +91,15 @@ function initTabs() {
     });
   });
 
-  // Respond to back/forward navigation.
-  window.addEventListener('popstate', () => {
+  // Keep the visible tab in sync with the hash. popstate covers back/forward;
+  // hashchange covers in-page links such as the #research anchors in the news
+  // feed, which fire hashchange but NOT popstate.
+  const syncTabToHash = () => {
     const tab = (window.location.hash || '').replace('#', '');
     activateTab(tab || 'home', { updateHash: false });
-  });
+  };
+  window.addEventListener('popstate', syncTabToHash);
+  window.addEventListener('hashchange', syncTabToHash);
 
   // Honour an incoming hash (deep link / refresh) without pushing a new entry.
   const rawTab = (window.location.hash || '').replace('#', '');
@@ -146,6 +150,20 @@ function renderHomeTab() {
     allNews.forEach(item => {
       const li = document.createElement('li');
       li.innerHTML = `<strong>${item.date}</strong>: ${item.content}`;
+      // External news links open in a new tab; in-page (#tab) links must not.
+      li.querySelectorAll('a[href^="http"]').forEach(a => {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      });
+      // In-page links (e.g. #research) switch tabs through the hashchange
+      // handler. Bring the reader back up to the tab bar as well, or they
+      // land halfway down the tab they just opened.
+      li.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', () => {
+          const nav = document.querySelector('.tabs-nav');
+          if (nav) nav.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
       newsContainer.appendChild(li);
     });
   }

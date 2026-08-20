@@ -65,6 +65,17 @@ h2 {
   letter-spacing: -0.01em;
 }
 
+/* Section-heading icons (Font Awesome, replacing the original emoji).
+   Fixed width keeps every heading label starting at the same x. */
+h2 i {
+  display: inline-block;
+  width: 1.15em;
+  margin-right: 0.5rem;
+  font-size: 0.85em;
+  text-align: center;
+  color: var(--accent-color);
+}
+
 /* Navigation */
 nav {
   margin-top: 1.5rem;
@@ -235,19 +246,6 @@ section {
   display: inline-block;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   white-space: nowrap;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(74, 116, 185, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 6px rgba(74, 116, 185, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(74, 116, 185, 0);
-  }
 }
 
 .pub-links {
@@ -299,12 +297,30 @@ section {
 .news-container {
   max-height: 420px;
   overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  /* .news-list li:hover nudges 3px right; without this the overflow
+     briefly summons a horizontal scrollbar on every hover. */
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(74, 116, 185, 0.3) transparent;
 }
 
+/* Same accent tint as the .news-list li left rules, so the bar reads as
+   part of the feed rather than as browser chrome. */
 .news-container::-webkit-scrollbar {
-  display: none;
+  width: 6px;
+}
+
+.news-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.news-container::-webkit-scrollbar-thumb {
+  background-color: rgba(74, 116, 185, 0.3);
+  border-radius: 3px;
+}
+
+.news-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(74, 116, 185, 0.55);
 }
 
 .news-list {
@@ -324,6 +340,18 @@ section {
   border-left-color: var(--accent-color);
 }
 
+/* The last About-me section carries the closing rule itself, so all three
+   tabs meet the footer the same way (the other tabs get it for free from
+   the trailing .publication-item). */
+.misc-item {
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.misc-item p:last-child {
+  margin-bottom: 0;
+}
+
 /* Services and misc */
 .service-title {
   font-weight: 500;
@@ -336,10 +364,11 @@ section {
 }
 
 /* Footer */
+/* No padding-top or border here on purpose: it lets the last section's
+   2rem bottom margin collapse through and govern the gap, so the footer
+   sits exactly one section-break away, same as any other section. */
 footer {
-  margin-top: 2.5rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--border-color);
+  margin-top: 0;
   font-size: 0.85rem;
   color: var(--text-secondary);
   text-align: center;
