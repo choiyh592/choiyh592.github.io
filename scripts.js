@@ -1,4 +1,4 @@
-﻿// Global variables
+// Global variables
 let allPublications = [];
 let allNews = [];
 let allProjects = [];
@@ -24,6 +24,13 @@ const VALID_TABS = ['home', 'research', 'experience'];
 // The third tab was renamed 'projects' -> 'experience'. Keep any previously
 // shared or bookmarked #projects link pointing at the right tab.
 const TAB_ALIASES = { projects: 'experience' };
+
+// Which tab holds a given section id? Derived from the DOM so new sections
+// need no bookkeeping here. Returns null for an id that isn't in a tab.
+function tabForSection(id) {
+  const panel = document.getElementById(id)?.closest('.tab-content');
+  return panel ? panel.id.replace(/-tab$/, '') : null;
+}
 
 // Activate a tab by its name (e.g. 'home'). Visual behaviour is unchanged:
 // the .active class still drives display; this only adds ARIA sync, hash
@@ -155,13 +162,20 @@ function renderHomeTab() {
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
       });
-      // In-page links (e.g. #research) switch tabs through the hashchange
-      // handler. Bring the reader back up to the tab bar as well, or they
-      // land halfway down the tab they just opened.
+      // In-page links may name a tab (#research) or a section inside one
+      // (#peer-reviewed). Either way: open the owning tab, then scroll to the
+      // target. preventDefault keeps the section id out of the URL -- the hash
+      // stays tab-shaped, which is what the router reads, and it suppresses the
+      // browser's own anchor scroll so only our smooth one runs.
       li.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', () => {
-          const nav = document.querySelector('.tabs-nav');
-          if (nav) nav.scrollIntoView({ behavior: 'smooth' });
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const id = a.getAttribute('href').slice(1);
+          const named = TAB_ALIASES[id] || id;
+          const tab = VALID_TABS.includes(named) ? named : tabForSection(id);
+          if (tab) activateTab(tab);
+          const target = document.getElementById(id) || document.querySelector('.tabs-nav');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       });
       newsContainer.appendChild(li);
