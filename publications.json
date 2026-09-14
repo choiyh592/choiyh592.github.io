@@ -1,6 +1,24 @@
 ﻿{
     "publications":  [
                          {
+                             "title":  "How You Mark It Matters: Particle-Level Framing Effects in a Korean Search Agent",
+                             "authors":  [
+                                             "Yoonhyeok Choi",
+                                             "Nayeon Kwak",
+                                             "Hyun June Lee",
+                                             "Kangwon Lee",
+                                             "Jin Myoung Hyun"
+                                         ],
+                             "venue":  "Annual Conference on Human & Cognitive Language Technology (HCLT 2026)",
+                             "thumbnail":  "images/thumbs/hclt_2026_thumb.jpg",
+                             "selected":  0,
+                             "type":  "paper",
+                             "award":  "Oral Presentation",
+                             "links":  {
+                                           "code":  "https://github.com/choiyh592/How_You_Mark_It_Matters"
+                                       }
+                         },
+                         {
                              "title":  "Multimodal Deep Learning Model for Prediction of Prognosis in Central Nervous System Inflammation",
                              "authors":  [
                                              "Bo Kyu Choi*",
@@ -20,7 +38,8 @@
                              "award":  "",
                              "links":  {
                                            "pdf":  "https://academic.oup.com/braincomms/article-pdf/7/3/fcaf179/63138904/fcaf179.pdf",
-                                           "doi":  "https://doi.org/10.1093/braincomms/fcaf179"
+                                           "doi":  "https://doi.org/10.1093/braincomms/fcaf179",
+                                           "code":  "https://github.com/DigitalHealthcareLab/24CNSInfectionMRI"
                                        }
                          },
                          {
@@ -97,6 +116,10 @@
                      ],
     "news":  [
                  {
+                     "date":  "09/2026",
+                     "content":  "First-author <a href='#peer-reviewed'>paper accepted for oral presentation at HCLT 2026</a>."
+                 },
+                 {
                      "date":  "08/2026",
                      "content":  "Started as an Undergraduate Research Intern at the Medical Imaging and Computer Vision Laboratory (<a href='https://micv.yonsei.ac.kr/home'>MICV Lab</a>), Yonsei University College of Computing."
                  },
@@ -149,7 +172,7 @@
                      {
                          "title":  "Industry-Academia Collaboration: Yonsei Artificial Intelligence (YAI) × Liner AI",
                          "type":  "project",
-                         "description":  "Leading an industry-academia collaboration between Yonsei Artificial Intelligence (YAI), a student research organization, and Liner AI, directing a student team from problem definition through deployment. Work from the collaboration has been entered in national competitions and submitted to domestic conferences, currently under review.",
+                         "description":  "Leading an industry-academia collaboration between Yonsei Artificial Intelligence (YAI), a student research organization, and Liner AI, directing a student team from problem definition through deployment. Outputs include a first-author paper accepted for oral presentation at HCLT 2026 and entries in national competitions.",
                          "thumbnail":  "images/thumbs/Liner_symbol.svg",
                          "venue":  "Project Lead @ YAI × Liner AI"
                      },
