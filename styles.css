@@ -13,7 +13,7 @@
 body {
   font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
   line-height: 1.6;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 1.5rem;
   color: var(--text-color);
@@ -202,6 +202,14 @@ section {
 
 .pub-content {
   flex: 1;
+}
+
+/* Items with no thumbnail keep the same text indent as the ones that have
+   a thumbnail (160px + 2px border + the 1.25rem flex gap), so a mixed list
+   still reads as one column. No-op on mobile: .pub-content is display:contents
+   there, and the empty 80px grid column does the same job. */
+.publication-item > .pub-content:first-child {
+  margin-left: calc(162px + 1.25rem);
 }
 
 .pub-title {

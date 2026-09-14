@@ -363,6 +363,12 @@ function createItemElement(item, displayType) {
       projectLink.textContent = '[Project Page]';
       links.appendChild(projectLink);
     }
+    if (item.links.submission) {
+      const subLink = document.createElement('a');
+      subLink.href = item.links.submission;
+      subLink.textContent = '[Submission Page]';
+      links.appendChild(subLink);
+    }
     if (item.links.patent) {
       const patentLink = document.createElement('a');
       patentLink.href = item.links.patent;

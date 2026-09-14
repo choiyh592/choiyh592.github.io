@@ -97,12 +97,24 @@
                      ],
     "news":  [
                  {
+                     "date":  "08/2026",
+                     "content":  "Started as an Undergraduate Research Intern at the Medical Imaging and Computer Vision Laboratory (<a href='https://micv.yonsei.ac.kr/home'>MICV Lab</a>), Yonsei University College of Computing."
+                 },
+                 {
+                     "date":  "08/2026",
+                     "content":  "Received the Honor for Academic Excellence from Yonsei University for the Spring 2026 semester."
+                 },
+                 {
+                     "date":  "07/2026",
+                     "content":  "Started leading an <a href='#experience'>industry-academia collaboration between Yonsei Artificial Intelligence (YAI) and Liner AI</a>."
+                 },
+                 {
                      "date":  "06/2026",
                      "content":  "Participated in the <a href='https://news.yonsei.ac.kr/kr/news/detail?bbSeq=35920&bbCategory=md'>2026 Spring Gangnam Severance Hospital - College of Engineering Joint Academic Symposium</a>."
                  },
                  {
                      "date":  "01/2026",
-                     "content":  "<a href='https://doi.org/10.8080/1020240092215'>Korean patent</a> granted for a multimodal deep learning model for the early classification and prognosis of central nervous system inflammatory diseases."
+                     "content":  "<a href='https://doi.org/10.8080/1020240092215'>Korean patent</a> published for a multimodal deep learning model for the early classification and prognosis of central nervous system inflammatory diseases."
                  },
                  {
                      "date":  "11/2025",
@@ -130,32 +142,36 @@
                  },
                  {
                      "date":  "11/2023",
-                     "content":  "Started as an Undergraduate Research Intern at the Digital Healthcare Laboratory, Yonsei University College of Medicine."
+                     "content":  "Started as an Undergraduate Research Intern at the Digital Healthcare Laboratory (<a href='https://www.dhlab.org/'>DHLab</a>), Yonsei University College of Medicine."
                  }
              ],
     "projects":  [
                      {
-                         "title":  "SVEN: SHAP analysis of Vectorized Entries for Neural networks",
+                         "title":  "Industry-Academia Collaboration: Yonsei Artificial Intelligence (YAI) × Liner AI",
                          "type":  "project",
-                         "description":  "Constructed an efficient SHAP evaluation framework for vectorized inputs by implementing Štrumbelj-style approximations.",
-                         "thumbnail":  "https://upload.wikimedia.org/wikipedia/en/c/ce/Sven_from_Frozen.png",
-                         "venue":  "Project @ DHLAB",
+                         "description":  "Leading an industry-academia collaboration between Yonsei Artificial Intelligence (YAI), a student research organization, and Liner AI, directing a student team from problem definition through deployment. Work from the collaboration has been entered in national competitions and submitted to domestic conferences, currently under review.",
+                         "thumbnail":  "images/thumbs/Liner_symbol.svg",
+                         "venue":  "Project Lead @ YAI × Liner AI"
+                     },
+                     {
+                         "title":  "Research Idea Commercialization Challenge 2026",
+                         "type":  "competition",
+                         "description":  "Team lead for 'SMART-PFN: Scalable Multimodal Analysis of Recovery Trajectories using Prior-data Fitted Networks', a clinical decision support system that quantifies daily recovery trajectories against each patient's own baseline for hospitalized patients with severe mental illness, from multimodal clinical, wearable, and behavioral data. Hosted by the Ministry of Health and Welfare, organized by the Korea Health Industry Development Institute (KHIDI), in collaboration with JNPMEDI Partners.",
+                         "thumbnail":  "images/thumbs/khidi_challenge.jpg",
+                         "venue":  "Round 1 Finalist, Ongoing"
+                     },
+                     {
+                         "title":  "AI & Public/Social Data Volunteer Action Idea Support Program 2026",
+                         "type":  "competition",
+                         "description":  "Built 'Is This Real?', an AI-powered health fact-checking service for seniors: a health claim forwarded through KakaoTalk is checked against research papers and Ministry of Food and Drug Safety public data, answered with a colour-coded verdict and its sources, with student volunteers teaching the service in person. Developed under the YAI × Liner AI collaboration.",
+                         "thumbnail":  "images/thumbs/is_this_real.jpg",
+                         "venue":  "7th/104 Teams, Chairman's Award (Gyeonggi Volunteer Center)",
                          "links":  {
-                                       "code":  "https://github.com/choiyh592/sven"
+                                       "submission":  "https://ggvc.contestkorea.com/submission/people_vote_view.php?displayrow=900000&int_number=1&Txt_key=all&Txt_word=&page=1&str_no=431"
                                    }
                      },
                      {
-                         "title":  "HUNGERGAMES: Hierarchical Unveiling of Neucleotide Genomic Evolution via Rigorous Game-theoretic Attribution Modeling of Evolutionary Sequences",
-                         "type":  "project",
-                         "description":  "Introduced a game-theoretic framework using SHAP interactions to decode large genomic language models, mapping model likelihoods to interpretable mutation neighborhoods using COVID-19 evolutionary data.",
-                         "thumbnail":  "images/thumbs/hungergames.png",
-                         "venue":  "Team Project @ YAI",
-                         "links":  {
-                                       "code":  "https://github.com/SOL1archive/YAICON-8th-Pathogenic-Mutation-Prediction"
-                                   }
-                     },
-                     {
-                         "title":  "IBM Z X UNSA Hackathon 2026",
+                         "title":  "IBM Z × UNSA Hackathon 2026",
                          "type":  "competition",
                          "description":  "Built 'MARGE: ML Agents for Rule-Based Generation of Evidence', an agentic LLM workflow designed to bridge the gap between complex ML diagnostics and accessible healthcare by generating rule-based clinical evidence.",
                          "thumbnail":  "https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/654/605/datas/medium.png",
