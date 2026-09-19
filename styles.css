@@ -780,6 +780,15 @@ strong {
   font-size: 0.95rem;
 }
 
+/* Lab / department links inside an experience entry. .exp-org is quiet
+   italic body text, so accent colour alone is a weak affordance here --
+   underline carries it. Deliberately NOT bold: .exp-org is weight 400 so
+   that .exp-title above stays the focus of the block. */
+.exp-org a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .exp-advisors {
   font-size: 0.85rem;
   color: var(--text-secondary);

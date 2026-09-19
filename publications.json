@@ -43,6 +43,21 @@
                                        }
                          },
                          {
+                             "title":  "Self-Claimed Authority Cues and Application-Layer Fact Verification in a Korean-Language Commercial Generative Search API",
+                             "authors":  [
+                                             "Kangwon Lee*",
+                                             "Yoonhyeok Choi*",
+                                             "Jin Myoung Hyun",
+                                             "Hyun June Lee",
+                                             "Nayeon Kwak"
+                                         ],
+                             "venue":  "The 7th Korea Artificial Intelligence Conference (2026)",
+                             "thumbnail":  "images/thumbs/kai_2026_thumb.jpg",
+                             "selected":  0,
+                             "type":  "poster",
+                             "award":  "Extended Abstract"
+                         },
+                         {
                              "title":  "Deep learning model for the prognostic prediction of acute inflammation of the central nervous system using T2-weighted brain magnetic resonance imaging",
                              "authors":  [
                                              "Bo Kyu Choi",
@@ -117,11 +132,15 @@
     "news":  [
                  {
                      "date":  "09/2026",
-                     "content":  "First-author <a href='#peer-reviewed'>paper accepted for oral presentation at HCLT 2026</a>."
+                     "content":  "Co-first-authored extended abstract from the YAI × Liner AI collaboration <a href='#presentations'>accepted at KAIC 2026</a>."
+                 },
+                 {
+                     "date":  "09/2026",
+                     "content":  "First-author paper from the YAI × Liner AI collaboration <a href='#peer-reviewed'>accepted for oral presentation at HCLT 2026</a>."
                  },
                  {
                      "date":  "08/2026",
-                     "content":  "Started as an Undergraduate Research Intern at the Medical Imaging and Computer Vision Laboratory (<a href='https://micv.yonsei.ac.kr/home'>MICV Lab</a>), Yonsei University College of Computing."
+                     "content":  "<a href='#experience-section'>Started as an Undergraduate Research Intern at MICV Lab</a>, Yonsei University College of Computing."
                  },
                  {
                      "date":  "08/2026",
@@ -141,7 +160,7 @@
                  },
                  {
                      "date":  "11/2025",
-                     "content":  "Started as an Undergraduate Research Intern at Gangnam Severance Hospital, Dept. of Neurology."
+                     "content":  "<a href='#experience-section'>Started as an Undergraduate Research Intern at Gangnam Severance Hospital</a>, Dept. of Neurology."
                  },
                  {
                      "date":  "11/2025",
@@ -153,7 +172,7 @@
                  },
                  {
                      "date":  "01/2025",
-                     "content":  "Co-authored <a href='#presentations'>poster presented at Pacific Symposium on Biocomputing (PSB 2025)</a>."
+                     "content":  "Co-authored <a href='#presentations'>poster presented at PSB 2025</a>."
                  },
                  {
                      "date":  "08/2024",
@@ -161,11 +180,11 @@
                  },
                  {
                      "date":  "06/2024",
-                     "content":  "Co-authored <a href='#presentations'>poster presented at Korean Epilepsy Congress (KEC 2024)</a>."
+                     "content":  "Co-authored <a href='#presentations'>poster presented at KEC 2024</a>."
                  },
                  {
                      "date":  "11/2023",
-                     "content":  "Started as an Undergraduate Research Intern at the Digital Healthcare Laboratory (<a href='https://www.dhlab.org/'>DHLab</a>), Yonsei University College of Medicine."
+                     "content":  "<a href='#experience-section'>Started as an Undergraduate Research Intern at DHLab</a>, Yonsei University College of Medicine."
                  }
              ],
     "projects":  [
