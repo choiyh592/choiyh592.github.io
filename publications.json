@@ -198,9 +198,9 @@
                      {
                          "title":  "Research Idea Commercialization Challenge 2026",
                          "type":  "competition",
-                         "description":  "Team lead for 'SMART-PFN: Scalable Multimodal Analysis of Recovery Trajectories using Prior-data Fitted Networks', a clinical decision support system that quantifies daily recovery trajectories against each patient's own baseline for hospitalized patients with severe mental illness, from multimodal clinical, wearable, and behavioral data. Hosted by the Ministry of Health and Welfare, organized by the Korea Health Industry Development Institute (KHIDI), in collaboration with JNPMEDI Partners.",
+                         "description":  "Team lead for 'SMART-PFN: Scalable Multimodal Analysis of Recovery Trajectories using Prior-data Fitted Networks', a clinical decision support system that quantifies daily recovery trajectories for hospitalized patients with severe mental illness, from multimodal clinical, wearable, and behavioral data. Hosted by the Ministry of Health and Welfare, organized by the Korea Health Industry Development Institute (KHIDI), in collaboration with JNPMEDI Partners.",
                          "thumbnail":  "images/thumbs/khidi_challenge.jpg",
-                         "venue":  "Round 1 Finalist, Ongoing"
+                         "venue":  "Round 1 Finalist"
                      },
                      {
                          "title":  "AI & Public/Social Data Volunteer Action Idea Support Program 2026",
