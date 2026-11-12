@@ -2,6 +2,9 @@
 let allPublications = [];
 let allNews = [];
 let allProjects = [];
+// Each TL;DR panel needs a unique id for aria-controls; the same item can be
+// rendered twice (Selected Work + its own tab), so ids come from a counter.
+let tldrCounter = 0;
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
@@ -203,6 +206,7 @@ function renderResearchTab() {
   const categories = {
     'paper': document.getElementById('peer-reviewed-container'),
     'patent': document.getElementById('patents-container'),
+    'conference': document.getElementById('presentations-container'),
     'poster': document.getElementById('presentations-container')
   };
 
@@ -221,13 +225,13 @@ function renderResearchTab() {
     }
   });
 
-  // Display empty messages if any category is empty
-  for (let key in categories) {
-    const container = categories[key];
+  // Display empty messages if any section is empty ('conference' and
+  // 'poster' share one container, so de-duplicate before checking).
+  new Set(Object.values(categories)).forEach(container => {
     if (container && container.children.length === 0) {
-      container.innerHTML = `<p class="text-muted">No ${key === 'paper' ? 'publications' : key + 's'} to display.</p>`;
+      container.innerHTML = '<p class="text-muted">No items to display.</p>';
     }
-  }
+  });
 }
 
 // Renders the Experience Tab dynamic components
@@ -299,12 +303,10 @@ function createItemElement(item, displayType) {
   title.textContent = item.title;
   content.appendChild(title);
 
-  // Middle details (Authors for papers, Description for projects)
+  // Middle details: authors for papers. Projects/competitions have no
+  // middle line -- their description lives behind the TL;DR toggle below.
   if (displayType === 'project') {
-    const description = document.createElement('div');
-    description.className = 'pub-authors';
-    description.textContent = item.description || '';
-    content.appendChild(description);
+    itemDiv.classList.add('no-middle'); // mobile grid shifts rows up one
   } else {
     // Render authors
     if (item.authors && item.authors.length > 0) {
@@ -337,61 +339,117 @@ function createItemElement(item, displayType) {
     venue.textContent = item.venue;
     venueContainer.appendChild(venue);
     
-    // Award Badge (if exists)
-    if (item.award) {
-      const award = document.createElement('div');
-      award.className = 'pub-award';
-      award.textContent = item.award;
-      venueContainer.appendChild(award);
+    // Marker badges: "award" may be a string or a list, rendered in order
+    // (e.g. ["Short Paper", "Oral Presentation"]). Wrapped in one element so
+    // the mobile grid can place all badges in a single cell.
+    const awardList = (Array.isArray(item.award) ? item.award : [item.award]).filter(Boolean);
+    if (awardList.length > 0) {
+      const awards = document.createElement('div');
+      awards.className = 'pub-awards';
+      awardList.forEach(text => {
+        const award = document.createElement('span');
+        award.className = 'pub-award';
+        award.textContent = text;
+        awards.appendChild(award);
+      });
+      venueContainer.appendChild(awards);
     }
     
     content.appendChild(venueContainer);
   }
 
+  // TL;DR: a summary for papers ("tldr"), or the description for
+  // projects/competitions. Collapsed by default behind a bold toggle that
+  // leads the links row.
+  const tldrText = item.tldr || (displayType === 'project' ? item.description : '');
+  let tldrPanel = null;
+  let tldrButton = null;
+  if (tldrText) {
+    const panelId = `tldr-${++tldrCounter}`;
+    // .pub-tldr (animated 0fr -> 1fr grid row) > .pub-tldr-clip (overflow
+    // clip) > .pub-tldr-body (text, rule, spacing). Kept [hidden] while
+    // closed so it takes no space and is out of the accessibility tree.
+    tldrPanel = document.createElement('div');
+    tldrPanel.className = 'pub-tldr';
+    tldrPanel.id = panelId;
+    tldrPanel.hidden = true;
+    const clip = document.createElement('div');
+    clip.className = 'pub-tldr-clip';
+    const body = document.createElement('div');
+    body.className = 'pub-tldr-body';
+    body.textContent = tldrText;
+    clip.appendChild(body);
+    tldrPanel.appendChild(clip);
+
+    tldrButton = document.createElement('button');
+    tldrButton.type = 'button';
+    tldrButton.className = 'tldr-toggle';
+    tldrButton.textContent = '[TL;DR]';
+    tldrButton.setAttribute('aria-expanded', 'false');
+    tldrButton.setAttribute('aria-controls', panelId);
+    tldrButton.addEventListener('click', () => {
+      const opening = !tldrPanel.classList.contains('open');
+      tldrButton.setAttribute('aria-expanded', opening ? 'true' : 'false');
+      if (opening) {
+        tldrPanel.hidden = false;
+        void tldrPanel.offsetHeight; // commit the closed state so it animates
+        tldrPanel.classList.add('open');
+      } else {
+        tldrPanel.classList.remove('open');
+        // Re-hide once the collapse has finished (300ms = --transition-time),
+        // unless it was reopened in the meantime.
+        const hide = () => { if (!tldrPanel.classList.contains('open')) tldrPanel.hidden = true; };
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) hide();
+        else setTimeout(hide, 300);
+      }
+    });
+  }
+
   // Links
-  if (item.links) {
+  if (item.links || tldrButton) {
     const links = document.createElement('div');
     links.className = 'pub-links';
-    
-    if (item.links.pdf) {
+    const linkData = item.links || {};
+
+    if (linkData.pdf) {
       const pdfLink = document.createElement('a');
-      pdfLink.href = item.links.pdf;
+      pdfLink.href = linkData.pdf;
       pdfLink.textContent = '[PDF]';
       links.appendChild(pdfLink);
     }
-    if (item.links.doi) {
+    if (linkData.doi) {
       const doiLink = document.createElement('a');
-      doiLink.href = item.links.doi;
+      doiLink.href = linkData.doi;
       doiLink.textContent = '[DOI]';
       links.appendChild(doiLink);
     }
-    if (item.links.code) {
+    if (linkData.code) {
       const codeLink = document.createElement('a');
-      codeLink.href = item.links.code;
+      codeLink.href = linkData.code;
       codeLink.textContent = '[Code]';
       links.appendChild(codeLink);
     }
-    if (item.links.project) {
+    if (linkData.project) {
       const projectLink = document.createElement('a');
-      projectLink.href = item.links.project;
+      projectLink.href = linkData.project;
       projectLink.textContent = '[Project Page]';
       links.appendChild(projectLink);
     }
-    if (item.links.submission) {
+    if (linkData.submission) {
       const subLink = document.createElement('a');
-      subLink.href = item.links.submission;
+      subLink.href = linkData.submission;
       subLink.textContent = '[Submission Page]';
       links.appendChild(subLink);
     }
-    if (item.links.patent) {
+    if (linkData.patent) {
       const patentLink = document.createElement('a');
-      patentLink.href = item.links.patent;
+      patentLink.href = linkData.patent;
       patentLink.textContent = '[Patent]';
       links.appendChild(patentLink);
     }
-    if (item.links.credential) {
+    if (linkData.credential) {
       const credLink = document.createElement('a');
-      credLink.href = item.links.credential;
+      credLink.href = linkData.credential;
       credLink.textContent = '[View Credential]';
       links.appendChild(credLink);
     }
@@ -402,12 +460,22 @@ function createItemElement(item, displayType) {
       a.rel = 'noopener noreferrer';
     });
 
+    if (tldrButton) {
+      links.prepend(tldrButton);
+    }
+
     if (links.children.length > 0) {
       content.appendChild(links);
     }
   }
 
   itemDiv.appendChild(content);
+
+  // The TL;DR panel is a sibling of the thumbnail + content, wrapping onto
+  // its own line below them, so opening it never moves the thumbnail.
+  if (tldrPanel) {
+    itemDiv.appendChild(tldrPanel);
+  }
   return itemDiv;
 }
 

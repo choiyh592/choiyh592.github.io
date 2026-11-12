@@ -12,8 +12,12 @@
                              "venue":  "Annual Conference on Human & Cognitive Language Technology (HCLT 2026)",
                              "thumbnail":  "images/thumbs/hclt_2026_thumb.jpg",
                              "selected":  0,
-                             "type":  "paper",
-                             "award":  "Oral Presentation",
+                             "type":  "conference",
+                             "award":  [
+                                           "Short Paper",
+                                           "Oral Presentation"
+                                       ],
+                             "tldr":  "Rewording a question with a different Korean particle leaves a search agent's verdict unchanged, but silently swaps out most of the evidence behind it. We sent 60 health-science claims under six framings to Liner's production search agent (4,510 API calls) and had 1,200 answers labeled blind by human annotators. Meaning-preserving particle swaps had no measurable effect on verdicts, yet replaced 84-86% of the scholarly sources retrieved. Explicitly directional framing flipped the verdict on 53% of claims, almost all of them contested or emerging, while the retrieved sources stayed 96.4% identical: the flip happens when the answer is generated, not when evidence is retrieved.",
                              "links":  {
                                            "code":  "https://github.com/choiyh592/How_You_Mark_It_Matters"
                                        }
@@ -36,6 +40,7 @@
                              "selected":  1,
                              "type":  "paper",
                              "award":  "",
+                             "tldr":  "Brain MRI and clinical data together predict the outcome of CNS inflammation better than either alone. A 3D CNN reads 43 brain regions segmented from T1-weighted MRI with FastSurfer, and its features are fused with clinical variables. Trained on 291 patients and tested on a later, held-out cohort of 106, the multimodal model beat single-modality models in every cause group (external AUROC 0.80 autoimmune, 0.91 bacterial, 0.92 viral, 1.00 tuberculosis). Shown the model's output, neurologists, paediatricians and radiologists all predicted prognosis more accurately.",
                              "links":  {
                                            "pdf":  "https://academic.oup.com/braincomms/article-pdf/7/3/fcaf179/63138904/fcaf179.pdf",
                                            "doi":  "https://doi.org/10.1093/braincomms/fcaf179",
@@ -53,9 +58,13 @@
                                          ],
                              "venue":  "The 7th Korea Artificial Intelligence Conference (2026)",
                              "thumbnail":  "images/thumbs/kai_2026_thumb.jpg",
+                             "tldr":  "Tell a Korean search agent you work at the institution in question, and it becomes far more likely to accept your false claim; one added instruction undoes that. Across 15 cases in five domains (education, government policy, companies, transport, culture), each checkable against official sources, we put false claims to Liner's Search Agent API in multi-turn conversations. Plain false claims were accepted 42.2% of the time; with a self-claimed insider cue, 93.3%. Asking afterwards for the claim to be judged against official sources corrected 61.9–73.7% of those acceptances, and the same instruction sent alongside the false claim prevented acceptance entirely, with or without the cue. An exploratory result (one API, 15 cases), but a defence developers can add at the request level without retraining anything.",
                              "selected":  0,
-                             "type":  "poster",
-                             "award":  "Extended Abstract"
+                             "type":  "conference",
+                             "award":  [
+                                           "Short Paper",
+                                           "Oral Presentation"
+                                       ]
                          },
                          {
                              "title":  "Deep learning model for the prognostic prediction of acute inflammation of the central nervous system using T2-weighted brain magnetic resonance imaging",
@@ -68,6 +77,7 @@
                                          ],
                              "venue":  "Pacific Symposium on Biocomputing (2025)",
                              "thumbnail":  "images/thumbs/psb.jpg",
+                             "tldr":  "Can a routine T2-weighted brain MRI alone predict how patients with acute CNS inflammation will be doing at discharge? A modified 3D DenseNet trained on scans of 483 Severance Hospital patients from 2010–2019 predicted a poor outcome (modified Rankin Scale ≥ 3) in a later 2020–2023 cohort with an AUROC of 0.78 and accuracy of 0.82. Separate models per cause of inflammation gave mixed results (AUROC 0.87 for autoimmune, 0.65–0.67 for bacterial and viral), which pointed toward adding clinical information in a multimodal model.",
                              "selected":  1,
                              "type":  "poster",
                              "award":  "Poster Presentation",
@@ -86,6 +96,7 @@
                                          ],
                              "venue":  "Korean Epilepsy Congress (2024)",
                              "thumbnail":  "images/thumbs/kec.webp",
+                             "tldr":  "Two forms of idiopathic generalized epilepsy, juvenile myoclonic epilepsy (JME) and generalized tonic-clonic seizures alone (GTCA), look so alike clinically that even specialists struggle to tell them apart. From 3D T1-weighted MRI of 196 people (127 JME, 37 GTCA, 32 healthy controls), a DenseNet-169-based model reading 43 FastSurfer-segmented brain regions separated the three groups with a macro-average AUROC of 0.81, although their clinical variables showed no significant differences. SHAP highlighted the parietal lobe and deep structures including the thalamus, amygdala and basal ganglia, partly matching earlier radiomics and fMRI findings.",
                              "selected":  0,
                              "type":  "poster",
                              "award":  "Poster Presentation"
@@ -97,25 +108,15 @@
                                              "Bo Kyu Choi",
                                              "Yoonhyeok Choi"
                                          ],
-                             "venue":  "Korean Patent No. 10-2024-0092215 (2024)",
+                             "venue":  "Korean Patent Application No. 10-2024-0092215 (Pub. No. 10-2026-0010578, 2026)",
                              "thumbnail":  "images/thumbs/patent.jpg",
+                             "tldr":  "A device and method for predicting the prognosis of CNS inflammatory disease from a patient's MRI combined with their clinical information, using SHAP values to choose what the model learns from. The brain is split into 43 regions, grouped into 14 categories, and the 10 with the highest SHAP values are kept for training, with a separate model for each cause of disease; the output is a prediction of disability or no disability. The claims also cover the SHAP estimator itself, which averages Monte Carlo samples over coalition vectors and checks the result for local additivity.",
                              "selected":  0,
                              "type":  "patent",
                              "award":  "",
                              "links":  {
                                            "doi":  "https://doi.org/10.8080/1020240092215"
                                        }
-                         },
-                         {
-                             "title":  "Research Ethics Training for Human Subjects and Human Derivatives Research",
-                             "authors":  [
-                                             "Korea National Institute of Health (NIH)"
-                                         ],
-                             "venue":  "Completed 2025/11/17 (ID: 2025-Bioethics-010636)",
-                             "thumbnail":  "images/thumbs/knih.jpg",
-                             "selected":  0,
-                             "type":  "certification",
-                             "award":  ""
                          },
                          {
                              "title":  "The Medical Scientist Training Program (Undergraduate Course)",
@@ -129,14 +130,18 @@
                              "award":  ""
                          }
                      ],
-    "news":  [
-                 {
+    "news":  [  
+                {
                      "date":  "09/2026",
-                     "content":  "Co-first-authored extended abstract from the YAI × Liner AI collaboration <a href='#presentations'>accepted at KAIC 2026</a>."
+                     "content":  "Participated in the <a href='https://news.yonsei.ac.kr/kr/news/detail?bbSeq=36150&bbCategory=_BBCATE'>2026 Yonsei AI+X Networking Day</a> as a student researcher."
                  },
                  {
                      "date":  "09/2026",
-                     "content":  "First-author paper from the YAI × Liner AI collaboration <a href='#peer-reviewed'>accepted for oral presentation at HCLT 2026</a>."
+                     "content":  "Co-first-authored short paper from the YAI × Liner AI collaboration <a href='#presentations'>accepted at KAIC 2026</a>."
+                 },
+                 {
+                     "date":  "09/2026",
+                     "content":  "First-author paper from the YAI × Liner AI collaboration <a href='#presentations'>accepted for oral presentation at HCLT 2026</a>."
                  },
                  {
                      "date":  "08/2026",
@@ -148,7 +153,7 @@
                  },
                  {
                      "date":  "07/2026",
-                     "content":  "Started leading an <a href='#projects-section'>industry-academia collaboration between Yonsei Artificial Intelligence (YAI) and Liner AI</a>."
+                     "content":  "Started leading an <a href='#activities-section'>industry-academia collaboration between Yonsei Artificial Intelligence (YAI) and Liner AI</a>."
                  },
                  {
                      "date":  "06/2026",
@@ -196,27 +201,27 @@
                          "venue":  "Project Lead @ YAI × Liner AI"
                      },
                      {
-                         "title":  "Research Idea Commercialization Challenge 2026",
+                         "title":  "Research Idea Commercialization Challenge 2026 @ KHIDI",
                          "type":  "competition",
                          "description":  "Team lead for 'SMART-PFN: Scalable Multimodal Analysis of Recovery Trajectories using Prior-data Fitted Networks', a clinical decision support system that quantifies daily recovery trajectories for hospitalized patients with severe mental illness, from multimodal clinical, wearable, and behavioral data. Hosted by the Ministry of Health and Welfare, organized by the Korea Health Industry Development Institute (KHIDI), in collaboration with JNPMEDI Partners.",
                          "thumbnail":  "images/thumbs/khidi_challenge.jpg",
                          "venue":  "Round 1 Finalist"
                      },
                      {
-                         "title":  "AI & Public/Social Data Volunteer Action Idea Support Program 2026",
+                         "title":  "AI & Public/Social Data Volunteer Action Idea Support Program 2026 @ GGVC",
                          "type":  "competition",
                          "description":  "Built 'Is This Real?', an AI-powered health fact-checking service for seniors: a health claim forwarded through KakaoTalk is checked against research papers and Ministry of Food and Drug Safety public data, answered with a colour-coded verdict and its sources, with student volunteers teaching the service in person. Developed under the YAI × Liner AI collaboration.",
                          "thumbnail":  "images/thumbs/is_this_real.jpg",
-                         "venue":  "7th/104 Teams, Chairman's Award (Gyeonggi Volunteer Center)",
+                         "venue":  "7th/104 Teams, Chairman's Award",
                          "links":  {
                                        "submission":  "https://ggvc.contestkorea.com/submission/people_vote_view.php?displayrow=900000&int_number=1&Txt_key=all&Txt_word=&page=1&str_no=431"
                                    }
                      },
                      {
-                         "title":  "IBM Z × UNSA Hackathon 2026",
+                         "title":  "IBM Z × UNSA Hackathon 2026 \n @ Sheridan",
                          "type":  "competition",
                          "description":  "Built 'MARGE: ML Agents for Rule-Based Generation of Evidence', an agentic LLM workflow designed to bridge the gap between complex ML diagnostics and accessible healthcare by generating rule-based clinical evidence.",
-                         "thumbnail":  "https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/654/605/datas/medium.png",
+                         "thumbnail":  "images/thumbs/ibm_unsa.jpg",
                          "venue":  "6th/69 Teams (Top 10), Best International Hack",
                          "links":  {
                                        "project":  "https://devpost.com/software/marge-ml-agents-for-rule-based-generation-of-evidence"

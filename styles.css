@@ -114,14 +114,27 @@ nav a:hover, .social-links-header a:hover {
   margin-right: 0.4rem;
 }
 
-/* Unified animation for elements (not sections) */
-.publication-item, .award-item, .service-category, .misc-item, .news-list li {
+/* Unified hover feedback. Text rows nudge right; items with a thumbnail
+   (.publication-item: papers, patents, activities, competitions, certs)
+   zoom the thumbnail instead -- a nudge shifts a large block and would
+   drag the grid lines in the two-column lists. Titles never change colour
+   on hover: they aren't links. */
+.award-item, .service-category, .misc-item, .news-list li,
+.experience-item {
   transition: transform var(--transition-time) ease;
 }
 
-.publication-item:hover, .award-item:hover, 
-.service-category:hover, .misc-item:hover, .news-list li:hover {
+.award-item:hover, 
+.service-category:hover, .misc-item:hover, .news-list li:hover,
+.experience-item:hover {
   transform: translateX(var(--animation-offset));
+}
+
+/* hover: hover keeps a tap on mobile from leaving a thumbnail zoomed. */
+@media (hover: hover) {
+  .publication-item:hover .pub-thumbnail img {
+    transform: scale(1.08);
+  }
 }
 
 /* Section animation */
@@ -174,6 +187,14 @@ section {
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  /* The TL;DR panel wraps onto a second line under thumbnail + text, so the
+     first line (and the thumbnail centred in it) never changes height.
+     row-gap 0: spacing above the panel is its own margin-top.
+     align-content: lines pack at the top when a grid cell is stretched by
+     its row-neighbour. */
+  flex-wrap: wrap;
+  row-gap: 0;
+  align-content: flex-start;
 }
 
 .pub-thumbnail {
@@ -212,6 +233,105 @@ section {
   margin-left: calc(162px + 1.25rem);
 }
 
+/* Experience-tab lists (activities, competitions, certifications) carry no
+   author line and keep their detail behind TL;DR, so a 160px thumb dwarfs
+   the text. Sized to the usual text block there (2-line title + venue +
+   buttons = 119px): 118px + 2px border. The no-thumbnail / TL;DR indent
+   follows suit (120px + gap). Mobile is unaffected: its 80px !important
+   rules win. */
+#experience-tab .pub-thumbnail {
+  width: 118px;
+  height: 118px;
+}
+
+#experience-tab .publication-item > .pub-content:first-child {
+  margin-left: calc(120px + 1.25rem);
+}
+
+/* With the smaller thumbs these lists fit two per row on desktop.
+   Mobile (<=768px) stays single-column.
+   Rules: no per-item bottom border (an odd last item would leave a
+   half-width rule). Instead:
+   - the grid closes with one full-width rule (the h2's underline opens it);
+   - rows are separated by a full-width rule drawn from each left-column
+     item from row 2 on (200% of its column = the whole grid), so an odd
+     last row still gets a complete line;
+   - the column divider is drawn from each left-column item's right edge,
+     joined into one continuous line through every row (even beside an
+     empty right cell) and inset only at the very top and bottom of the
+     grid, so it crosses the row rules but never touches the h2 underline
+     or the closing rule. */
+@media (min-width: 769px) {
+  #projects-container,
+  #competitions-container,
+  #certifications-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0;
+    row-gap: 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  #projects-container > .publication-item,
+  #competitions-container > .publication-item,
+  #certifications-container > .publication-item {
+    border-bottom: none;
+    padding-right: 1.5rem;
+    position: relative;
+  }
+
+  /* Column divider: one segment per row, edge to edge, so the segments
+     join into a single line... */
+  #projects-container > .publication-item:nth-child(odd)::after,
+  #competitions-container > .publication-item:nth-child(odd)::after,
+  #certifications-container > .publication-item:nth-child(odd)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--border-color);
+    pointer-events: none;
+  }
+
+  /* ...inset at the top of the first row... */
+  #projects-container > .publication-item:first-child::after,
+  #competitions-container > .publication-item:first-child::after,
+  #certifications-container > .publication-item:first-child::after {
+    top: 1.25rem;
+  }
+
+  /* ...and at the bottom of the last row (its left item is one of the
+     last two children). */
+  #projects-container > .publication-item:nth-child(odd):nth-last-child(-n+2)::after,
+  #competitions-container > .publication-item:nth-child(odd):nth-last-child(-n+2)::after,
+  #certifications-container > .publication-item:nth-child(odd):nth-last-child(-n+2)::after {
+    bottom: 1.25rem;
+  }
+
+  /* Row separator, full grid width, above every row after the first. */
+  #projects-container > .publication-item:nth-child(odd):nth-child(n+3)::before,
+  #competitions-container > .publication-item:nth-child(odd):nth-child(n+3)::before,
+  #certifications-container > .publication-item:nth-child(odd):nth-child(n+3)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 1px;
+    background-color: var(--border-color);
+    pointer-events: none;
+  }
+
+  #projects-container > .publication-item:nth-child(even),
+  #competitions-container > .publication-item:nth-child(even),
+  #certifications-container > .publication-item:nth-child(even) {
+    padding-left: 1.5rem;
+    padding-right: 0;
+  }
+}
+
 .pub-title {
   font-weight: 500;
   margin-bottom: 0.4rem;
@@ -242,6 +362,13 @@ section {
   font-size: 0.9rem;
   font-style: italic;
   color: var(--text-secondary);
+}
+
+/* Holds one or more .pub-award badges (e.g. "Short Paper" + "Oral Presentation"). */
+.pub-awards {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
 .pub-award {
@@ -276,6 +403,76 @@ section {
   background-color: var(--accent-color);
   transform: translateX(3px);
   box-shadow: 0 2px 5px rgba(74, 116, 185, 0.2);
+}
+
+/* TL;DR toggle: same chip as the [PDF]/[DOI] links, but bold and always
+   first in the row, so it reads as the entry point. Filled while open. */
+.tldr-toggle {
+  font: inherit;
+  font-weight: 700;
+  color: var(--accent-color);
+  background-color: rgba(74, 116, 185, 0.08);
+  border: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-time) ease;
+}
+
+.tldr-toggle:hover,
+.tldr-toggle[aria-expanded="true"] {
+  color: #fff;
+  background-color: var(--accent-color);
+  box-shadow: 0 2px 5px rgba(74, 116, 185, 0.2);
+}
+
+.tldr-toggle:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Expanded TL;DR text. Left rule borrowed from the news feed. */
+/* Slides open by animating a one-row grid from 0fr to 1fr (height: auto
+   can't be transitioned directly). JS un-hides it, then adds .open. */
+.pub-tldr {
+  flex-basis: 100%; /* full row width, under thumbnail and text */
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-time) ease;
+}
+
+.pub-tldr[hidden] {
+  display: none; /* author display:grid would otherwise override [hidden] */
+}
+
+.pub-tldr.open {
+  grid-template-rows: 1fr;
+}
+
+.pub-tldr-clip {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.pub-tldr-body {
+  margin-top: 0.6rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(74, 116, 185, 0.35);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  opacity: 0;
+  transition: opacity var(--transition-time) ease;
+}
+
+.pub-tldr.open .pub-tldr-body {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pub-tldr, .pub-tldr-body {
+    transition: none;
+  }
 }
 
 /* Awards section */
@@ -487,9 +684,10 @@ strong {
   }
 
   /* Disable right-moving hover animations on mobile */
-  .publication-item:hover, .award-item:hover, 
+  .award-item:hover, 
   .service-category:hover, .misc-item:hover, .news-list li:hover,
-  nav a:hover, .social-links-header a:hover, .pub-links a:hover {
+  .experience-item:hover,
+  nav a:hover, .social-links-header a:hover, .pub-links a:hover, .tldr-toggle:hover {
     transform: none !important;
   }
 }
@@ -656,8 +854,8 @@ strong {
     margin-bottom: 0;
   }
 
-  /* Award and Links occupy Row 4 together (side-by-side) */
-  .pub-award {
+  /* Award badges and Links occupy Row 4 together (side-by-side) */
+  .pub-awards {
     grid-column: 1 / span 2;
     grid-row: 4;
     justify-self: start;
@@ -672,6 +870,23 @@ strong {
     align-self: center;
     margin-top: 0;
   }
+
+  .pub-tldr {
+    grid-column: 1 / span 2;
+    grid-row: 5;
+  }
+
+  .pub-tldr-body {
+    margin-top: 0; /* the grid row-gap already spaces it */
+  }
+
+  /* Activities/competitions have no authors row (their description sits
+     behind TL;DR), so move everything up a row instead of leaving an empty
+     track that doubles the row-gap under the title. */
+  .publication-item.no-middle .pub-venue { grid-row: 2; }
+  .publication-item.no-middle .pub-awards,
+  .publication-item.no-middle .pub-links { grid-row: 3; }
+  .publication-item.no-middle .pub-tldr { grid-row: 4; }
 
   /* Font size adjustments on mobile */
   /* 1. Important texts (decreased a bit) */
@@ -718,6 +933,7 @@ strong {
 
   .exp-advisors {
     font-size: 0.78rem !important;
+    margin-top: 0.37rem !important; /* smaller font, so more margin for the same gap */
   }
 
   .exp-bullets li {
@@ -738,9 +954,11 @@ strong {
 
 
 /* Experience Section Styles */
+/* Symmetric padding, no margin: the same rhythm as .publication-item, so
+   the gap above and below each dashed rule is equal. */
 .experience-item {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: 0;
+  padding: 0.8rem 0;
   border-bottom: 1px dashed var(--border-color);
 }
 
@@ -789,10 +1007,12 @@ strong {
   text-underline-offset: 2px;
 }
 
+/* margin-top tuned by measured ink gaps so title -> institution and
+   institution -> advisors read the same (14px on desktop). */
 .exp-advisors {
   font-size: 0.85rem;
   color: var(--text-secondary);
-  margin-top: 0.15rem;
+  margin-top: 0.275rem;
 }
 
 .exp-bullets {
@@ -825,7 +1045,6 @@ strong {
 
 
 /* Spacing alignment below h2 headers */
-.experience-item:first-of-type,
 .education-item,
 .news-container,
 .misc-item,
