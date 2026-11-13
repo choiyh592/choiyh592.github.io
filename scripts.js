@@ -349,7 +349,18 @@ function createItemElement(item, displayType) {
       awardList.forEach(text => {
         const award = document.createElement('span');
         award.className = 'pub-award';
-        award.textContent = text;
+        // "Oral Presentation" -> "Oral" on mobile: the trailing word sits in
+        // its own span that the mobile stylesheet hides.
+        const m = text.match(/^(.+?)( Presentation)$/);
+        if (m) {
+          award.append(m[1]);
+          const rest = document.createElement('span');
+          rest.className = 'pub-award-long';
+          rest.textContent = m[2];
+          award.appendChild(rest);
+        } else {
+          award.textContent = text;
+        }
         awards.appendChild(award);
       });
       venueContainer.appendChild(awards);

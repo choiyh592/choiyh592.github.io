@@ -854,6 +854,11 @@ strong {
     margin-bottom: 0;
   }
 
+  /* Shorter badges on mobile: "Oral Presentation" -> "Oral". */
+  .pub-award-long {
+    display: none;
+  }
+
   /* Award badges and Links occupy Row 4 together (side-by-side) */
   .pub-awards {
     grid-column: 1 / span 2;
